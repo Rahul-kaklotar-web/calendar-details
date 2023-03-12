@@ -1,0 +1,40 @@
+{
+  "test-user": [
+    {
+      "fname": "Kaklotar",
+      "lname": "Rahul",
+      "email": "rhul@gmail.com",
+      "country": "india",
+      "gender": "male",
+      "number": "6151651651",
+      "password": "000",
+      "cpassword": "000",
+      "address": "surat",
+      "id": 1
+    },
+    {
+      "fname": "test1",
+      "lname": "test k",
+      "email": "k@gmail.com",
+      "country": "Pakistan",
+      "gender": "male",
+      "number": "1144784848",
+      "password": "023",
+      "cpassword": "123",
+      "address": "hbhb",
+      "id": 2
+    },
+    {
+      "fname": "test22",
+      "lname": "lake22",
+      "email": "lake@gmail.com",
+      "country": "Pakistan",
+      "gender": "male",
+      "number": "7874758547",
+      "password": "000",
+      "cpassword": "000",
+      "address": "hibubiybi",
+      "id": 3
+    }
+  ]
+}
