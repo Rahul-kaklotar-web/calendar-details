@@ -35,6 +35,18 @@
       "cpassword": "000",
       "address": "hibubiybi",
       "id": 3
+    },
+    {
+      "fname": "Super",
+      "lname": "Admin",
+      "email": "superadmin007@gmail.com",
+      "country": "india",
+      "gender": "male",
+      "number": "7878787878",
+      "password": "000",
+      "cpassword": "000",
+      "address": "hello",
+      "id": 4
     }
   ]
 }

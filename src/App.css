@@ -1,3 +1,17 @@
+/* ======================================
+  Css File Index
+  
+  1. Font and colors
+  2. Common Css
+  3. Scrollbar
+  4. Card and Forms
+  5. Buttons
+
+====================================== */
+
+/* ======================================
+  1. Font and colors
+====================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
@@ -21,6 +35,10 @@
   --font-white: #FFFFFF;
 }
 
+
+/* ======================================
+  2. Common Css
+====================================== */
 * {
   margin: 0;
   padding: 0;
@@ -73,6 +91,10 @@ b, strong {
   color: var(--dark);
 }
 
+
+/* ======================================
+  3. Scrollbar
+====================================== */
 /* width */
 
 ::-webkit-scrollbar {
@@ -94,9 +116,11 @@ b, strong {
   background: var(--primary);
 }
 
-/* Card */
+/* ======================================
+  4. Card and Forms
+====================================== */
 .card {
-  border-radius: 1.2rem;
+  border-radius: .625rem;
   border-color: var(--border);
   background-color: var(--white);
 }
@@ -131,6 +155,7 @@ a:hover {
   border-color: var(--border);
   color: var(--dark);
   background-color: var(--bg-light);
+  border-radius: .625rem;
 }
 .form-control:focus {
   border-color: var(--primary);
@@ -145,7 +170,26 @@ a:hover {
   box-shadow: unset;
 }
 
-/* Buttons */
+/* login form */
+.form-label{
+  font-size: 14px;
+  font-weight: 400;
+}
+.form-pswrd{
+  position: relative;  
+}
+.form-pswrd i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  font-size: 20px;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+/* ======================================
+  5. Buttons
+====================================== */
 button:focus{
   outline: 0;
 }
@@ -196,22 +240,4 @@ a:-webkit-any-link:focus-visible {
   --bs-btn-disabled-color: var(--gray);
   --bs-btn-disabled-bg: var(--success);
   --bs-btn-disabled-border-color: var(--success);
-}
-
-
-/* login form */
-.form-label{
-  font-size: 14px;
-  font-weight: 400;
-}
-.form-pswrd{
-  position: relative;  
-}
-.form-pswrd i {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  font-size: 20px;
-  z-index: 1;
-  transform: translateY(-50%);
 }

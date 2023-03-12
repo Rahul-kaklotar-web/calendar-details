@@ -1,26 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 export const LoginForm = () => {
-    // eye
     const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("");
+    const [password, setPasswordInput] = useState("");
     const [emailInput, setEmailInput] = useState("");
-    const handlePasswordType = () => {
-        if (passwordType === "password") {
-            setPasswordType("text");
-            return;
-        }
-        setPasswordType("password")
-    }
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        sessionStorage.clear();
+    }, [])
+    
     const handleOnLogin = (e) => {
         e.preventDefault();
         if (validateForm()) {
             fetch("http://localhost:8000/test-user"+emailInput).then((res)=> {
                 return res.json();
             }).then((res)=>{
-                console.log(res);
+                // console.log(res);
+                if (Object.keys(res[0]).email === emailInput) {
+                        toast.error('please enter valid email')
+                }else{
+                    if (res[0].password === password) {
+                        sessionStorage.setItem('email', emailInput);
+                        toast.success('Login Successfully');
+                        navigate('/');
+                    }else{
+                        toast.error('enter correct password')
+                    }
+                }
             }).then((error)=>{
                 toast.error('login failed:'+error.message)
             })
@@ -28,7 +37,7 @@ export const LoginForm = () => {
     }
     const validateForm = ()=>{
         let result = true;
-        if (passwordInput=== null || passwordInput === '') {
+        if (password=== null || password === '') {
             result = false;
             toast.warning('Enter Password');
         }
@@ -44,6 +53,14 @@ export const LoginForm = () => {
         }
         return result;
     }
+    // eye
+    const handlePasswordType = () => {
+        if (passwordType === "password") {
+            setPasswordType("text");
+            return;
+        }
+        setPasswordType("password")
+    }
     return (
         <>
             <Container>
@@ -56,15 +73,12 @@ export const LoginForm = () => {
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Label>Email address</Form.Label>
                                         <Form.Control type="email" value={emailInput} onChange={e=> setEmailInput(e.target.value)}  placeholder="Enter email" />
-                                        <Form.Text className="text-muted">
-                                            We'll never share your email with anyone else.
-                                        </Form.Text>
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="formBasicPassword">
                                         <Form.Label>Password</Form.Label>
                                         <div className='form-pswrd mb-2'>
-                                            <Form.Control type={passwordType} value={passwordInput} onChange={e=> setPasswordInput(e.target.value)} placeholder="Password" />
+                                            <Form.Control type={passwordType} value={password} onChange={e=> setPasswordInput(e.target.value)} placeholder="Password" />
                                             <i onClick={handlePasswordType} className={`bx ${passwordType === 'password' ? 'bx-show' : 'bx-hide'}`}></i>
                                         </div>
                                         <Link to='/forgotpassword'>Forgot Password</Link>
